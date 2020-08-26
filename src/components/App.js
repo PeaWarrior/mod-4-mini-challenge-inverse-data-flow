@@ -102,7 +102,7 @@ class App extends React.Component {
       <>
         <Header spiceCount={this.state.spices.length} />
         <main>
-          <NewSpice />
+          <NewSpice addNewSpice={this.addNewSpice} />
           <SpiceList spices={this.state.spices} />
         </main>
       </>

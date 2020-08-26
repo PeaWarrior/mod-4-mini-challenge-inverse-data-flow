@@ -10,7 +10,15 @@ class NewSpice extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    this.props.addNewSpice(this.state)
     console.log("submitting...")
+  }
+
+  handleChange = e => {
+    e.persist();
+    this.setState(prevState => ({
+      [e.target.name]: e.target.value,
+    }))
   }
 
   render() {
@@ -19,13 +27,13 @@ class NewSpice extends React.Component {
         <h2>New Spice</h2>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="title">Title: </label>
-          <input type="text" name="title" />
+          <input onChange={this.handleChange} type="text" name="title" />
           <label htmlFor="image">Image URL: </label>
-          <input type="text" name="image" />
+          <input onChange={this.handleChange} type="text" name="image" />
           <label htmlFor="notes">Tasting Notes: </label>
-          <input type="text" name="notes" />
+          <input onChange={this.handleChange} type="text" name="notes" />
           <label htmlFor="notes">Description: </label>
-          <textarea type="text" name="description" />
+          <textarea onChange={this.handleChange} type="text" name="description" />
           <input type="submit" value="Submit" />
         </form>
       </div>

@@ -17,10 +17,29 @@ class SpiceList extends React.Component {
       ))
   }
 
+  handleSearch = (e) => {
+    e.persist();
+    this.setState(prevState => ({
+      search: e.target.value
+    }))
+  }
+
+  handleFourStarOnly = (e) => {
+    e.persist();
+    this.setState(prevState => ({
+      fourStarOnly: !prevState.fourStarOnly
+    }))
+  }
+
   render() {
     return (
       <section className="spice-list">
-        <Filter search={this.state.search} fourStarOnly={this.state.fourStarOnly} />
+        <Filter 
+        onSearch={this.handleSearch}
+        search={this.state.search}
+        onFourStarOnly={this.handleFourStarOnly}
+        fourStarOnly={this.state.fourStarOnly} 
+        />
         {this.renderSpices()}
       </section>
     )
